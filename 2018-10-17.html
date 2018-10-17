@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1>Josh's Cool Page</h1>
+
+    <p>Hey! I'm Josh! Welcome to my page.</p>
+
+    <script>
+      // get a random number between 0 and 10
+      // store it into a variable
+      x = Math.round(Math.random() * 10);
+
+      // define guess
+      guess = -1;
+      still_going = true
+
+      // while their guess is wrong:
+      while (still_going) {
+        // ask the user for a guess (prompt)
+        // store it into a variable
+        guess = prompt("Type your number here:");
+
+        // if the guess is too high:
+        if (guess > x) {
+          // tell the player that the guess is too high
+          // using alert
+          alert("Too high!");
+        }
+
+        // if the guess is too low:
+        if (guess < x) {
+          // tell the player that the guess is too low
+          // using alert
+          alert("Too low!");
+        }
+
+        // if the guess is exactly right:
+        if (guess == x) {
+          // tell the player that they won
+          // and end the game
+          alert("You won!");
+          still_going = false;
+        }
+      }
+    </script>
+  </body>
+</html>
