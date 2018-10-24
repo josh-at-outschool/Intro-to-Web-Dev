@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <p>
+      Score: <span id="score">0</span>
+    </p>
+
+    <p>
+      <input type="number" id="number-box">
+    </p>
+
+    <button onclick="increaseScore()">
+      Increase score
+    </button>
+
+    <script>
+      score = 0;
+
+      function increaseScore(){
+        for (n=0; n<10; n=n+1){
+          // get the amount
+          numberBoxElement = document.getElementById("number-box");
+          amount = parseInt(numberBoxElement.value);
+
+          // add amount to score
+          score = score + amount;
+
+          // insert new score into #score element
+          scoreElement = document.getElementById("score");
+          scoreElement.innerText = score;
+        }
+      }
+
+      // setInterval(increaseScore, 0);
+      // setTimeout(increaseScore, 2000);
+    </script>
+  </body>
+</html>

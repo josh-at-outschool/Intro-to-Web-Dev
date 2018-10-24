@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <p>
+      <input type="number" id="number-box">
+    </p>
+
+    <p>
+      <button onclick="checkIfPrime()">
+        check
+      </button>
+    </p>
+
+    <p id="results"></p>
+
+    <script>
+      function checkIfPrime(){
+        // get the number that the user typed in
+        numberBoxElement = document.getElementById("number-box");
+        number = parseInt(numberBoxElement.value);
+
+        // check (using division) whether number is prime:
+          // go through all of the inbetween numbers
+          // for each one:
+            // check whether number / inbetween === whole number
+            // if it is:
+              // the number is NOT prime
+
+          // if we make through all of the inbetween numbers,
+          // and haven't found a number by which to divide it:
+            // then it's prime
+
+        // if it is prime:
+          // print true
+        // if it's not prime:
+          // print false
+      }
+    </script>
+  </body>
+</html>
