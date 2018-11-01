@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+    <script>
+      players = [];
+
+      function setup(){
+        createCanvas(600, 600);
+        background(0);
+
+        // add a bunch of players to the players list
+        for (i=0; i<100; i++){
+          player = {
+            x: Math.random() * 600,
+            y: Math.random() * 600,
+
+            speed: {
+              x: Math.random() * 10 - 5,
+              y: Math.random() * 10 - 5,
+            },
+
+            color: {
+              r: Math.random() * 255,
+              g: Math.random() * 255,
+              b: Math.random() * 255,
+            },
+
+            id: Math.floor(Math.random() * 100),
+          };
+
+          players.push(player);
+        }
+      }
+
+      function draw(){
+        background(0);
+
+        // for each player:
+        for (i=0; i<players.length; i++){
+          player = players[i];
+
+          // draw the player
+          fill(player.color.r, player.color.g, player.color.b);
+          ellipse(player.x, player.y, 40, 40);
+          fill(255, 255, 255);
+          text(player.id, player.x, player.y);
+
+          // move the player
+          player.x = player.x + player.speed.x;
+          player.y = player.y + player.speed.y;
+
+          // check for wall collisions
+          if (player.y >= 600){
+            player.speed.y = player.speed.y * -1;
+          }
+
+          if (player.x >= 600){
+            player.speed.x = player.speed.x * -1;
+          }
+
+          if (player.y <= 0){
+            player.speed.y = player.speed.y * -1;
+          }
+
+          if (player.x <= 0){
+            player.speed.x = player.speed.x * -1;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+    <script>
+      player = {
+        x: 300,
+        y: 300,
+      };
+
+      speed = {
+        x: 1,
+        y: 2,
+      };
+
+      function setup(){
+        createCanvas(600, 600);
+        background(0);
+      }
+
+      function draw(){
+        // draw the player
+        ellipse(player.x, player.y, 40, 40);
+
+        // move the player
+        player.x = player.x + speed.x;
+        player.y = player.y + speed.y;
+
+        // check for wall collisions
+        if (player.y >= 600){
+          speed.y = -2;
+        }
+
+        if (player.x >= 600){
+          speed.x = -1;
+        }
+
+        if (player.y <= 0){
+          speed.y = 2;
+        }
+
+        if (player.x <= 0){
+          speed.x = 1;
+        }
+      }
+    </script>
+  </body>
+</html>
