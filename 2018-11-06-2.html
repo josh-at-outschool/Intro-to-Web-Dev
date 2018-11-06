@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+    <script>
+      ducks = [];
+
+      function setup(){
+        createCanvas(600, 600);
+        background(0);
+
+        for (i=0; i<3; i++){
+          duck = {
+            x: Math.random() * 600,
+            y: Math.random() * 600,
+            w: 100,
+            h: 100,
+            speed: {
+              x: Math.random() * 5 - 2.5,
+              y: Math.random() * 5 - 2.5,
+            },
+            color: {
+              r: Math.random() * 255,
+              g: Math.random() * 255,
+              b: Math.random() * 255,
+            },
+          };
+
+          ducks.push(duck);
+        }
+      }
+
+      function draw(){
+        background(0);
+
+        for (i=0; i<ducks.length; i++){
+          duck = ducks[i];
+
+          // calculate distance from mouse to duck
+          // d = sqrt(y-distance^2 + x-distance^2);
+          d = Math.sqrt(Math.pow(duck.y - mouseY, 2) + Math.pow(duck.x - mouseX, 2));
+
+          // draw
+          if (d < 50){
+            fill(255, 255, 255);
+          } else {
+            fill(duck.color.r, duck.color.g, duck.color.b);
+          }
+
+          ellipse(duck.x, duck.y, duck.w, duck.h);
+
+          // move
+          duck.x = duck.x + duck.speed.x;
+          duck.y = duck.y + duck.speed.y;
+
+          if (duck.x < 0 || duck.x > 600){
+            duck.speed.x = duck.speed.x * -1;
+          }
+
+          if (duck.y < 0 || duck.y > 600){
+            duck.speed.y = duck.speed.y * -1;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
